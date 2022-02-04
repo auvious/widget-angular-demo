@@ -1,0 +1,149 @@
+<button (click)="toggleWidgetOptions()">Configure</button>
+<table id="widget-options" [hidden]="widgetOptionsHidden">
+  <tr>
+    <td><b>pc-environment * </b></td>
+    <td>
+      <input [(ngModel)]="options.pcEnvironment" type="text" placeholder="mypurecloud.de" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>locale *</b></td>
+    <td>
+      <input [(ngModel)]="options.locale" type="text" placeholder="en-GR | el-GR | ..." />
+    </td>
+  </tr>
+  <tr>
+    <td><b>pc-queue *</b></td>
+    <td>
+      <input [(ngModel)]="options.pcQueue" type="text" placeholder="" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>pc-organization-id *</b></td>
+    <td>
+      <input [(ngModel)]="options.pcOrganizationId" type="text" placeholder="" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>pc-deployment-id *</b></td>
+    <td>
+      <input [(ngModel)]="options.pcDeploymentId" type="text" placeholder="" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>application-id *</b></td>
+    <td>
+      <input [(ngModel)]="options.applicationId" type="text" placeholder="auvious application id found in 'settings'" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>pc-callback-queue</b></td>
+    <td style="text-align: left;">
+      <input [(ngModel)]="options.pcCallbackQueue" type="text"
+        placeholder="Queue name. Required for 'callback' widget. The genesys callback interaction will be routed to this queue.">
+    </td>
+  </tr>
+  <tr>
+    <td><b>auvious-environment*</b></td>
+    <td>
+      <input [(ngModel)]="options.auviousEnvironment" type="text" placeholder="genesys...auvious.com" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>chat-mode*</b></td>
+    <td>
+      <input [(ngModel)]="options.chatMode" type="text"
+        placeholder="values `genesys-api`, `genesys-cloud`, `genesys-premise`." />
+    </td>
+  </tr>
+  <tr>
+    <td><b>active-widgets</b></td>
+    <td>
+      <input [(ngModel)]="options.activeWidgets" type="text"
+        placeholder="csv of 'video','callback', 'audio'. Leave empty for video only.">
+    </td>
+  </tr>
+  <tr>
+    <td><b>registration-type</b></td>
+    <td>
+      <input [(ngModel)]="options.registrationType" type="text" placeholder="name or nameEmailSubject" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>customer-avatar-url</b></td>
+    <td>
+      <input [(ngModel)]="options.customerAvatarUrl" type="text" placeholder="https://...." />
+    </td>
+  </tr>
+  <tr>
+    <td><b>customer-display-name</b></td>
+    <td>
+      <input [(ngModel)]="options.customerDisplayName" type="text" placeholder="John Doe" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>customer-subject</b></td>
+    <td>
+      <input [(ngModel)]="options.customerSubject" type="text" placeholder="requires customer-display-name" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>customer-email</b></td>
+    <td>
+      <input [(ngModel)]="options.customerEmail" type="text" placeholder="requires customer-display-name" />
+    </td>
+  </tr>
+  <tr>
+    <td><b>queue-extra-seconds</b></td>
+    <td>
+      <input [(ngModel)]="options.queueExtraSeconds" type="text" placeholder="30">
+    </td>
+  </tr>
+  <tr>
+    <td><b>wait-for-greeting-seconds</b></td>
+    <td>
+      <input [(ngModel)]="options.waitForGreetingSeconds" type="text" placeholder="3">
+    </td>
+  </tr>
+  <tr>
+    <td><b>dark-mode</b></td>
+    <td style="text-align: left;">
+      <input [(ngModel)]="options.darkMode" type="checkbox">
+    </td>
+  </tr>
+  <tr>
+    <td><b>color-primary</b></td>
+    <td style="text-align: left;">
+      <input [(ngModel)]="options.colorPrimary" type="text" placeholder="#ffffff or red or rgba(0,0,0)">
+    </td>
+  </tr>
+  <tr>
+    <td><b>color-accent</b></td>
+    <td style="text-align: left;">
+      <input [(ngModel)]="options.colorAccent" type="text" placeholder="#ffffff or red or rgba(0,0,0)">
+    </td>
+  </tr>
+  <tr>
+    <td><b>color-warn</b></td>
+    <td style="text-align: left;">
+      <input [(ngModel)]="options.colorWarn" type="text" placeholder="#ffffff or red or rgba(0,0,0)">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <button (click)="updateWidgetOptions()">update widget</button>
+    </td>
+  </tr>
+</table>
+
+<ng-container #widgetContainer></ng-container>
+
+<ng-template #widgetTemplate>
+  <app-auvious-widget></app-auvious-widget>
+</ng-template>
+
+<!-- <app-auvious-widget [pc-environment]="pcEnvironment" [language]="language" [pc-queue]="pcQueue"
+  [pc-organization-id]="pcOrganizationId" [pc-deployment-id]="pcDeploymentId" [registration-type]="registrationType"
+  [customer-avatar-url]="customerAvatarUrl" [dark-mode]="[darkMode]"
+  [queue-extra-seconds]="queueExtraSeconds">
+</app-auvious-widget> -->

@@ -1,0 +1,9 @@
+input[type=text] {
+    width: 300px;
+    padding: 10px;
+}
+
+table {
+    background-color: rgb(53, 107, 104);
+    padding: 20px;
+}
